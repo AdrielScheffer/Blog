@@ -7,6 +7,19 @@
     <title>Blog</title>
 </head>
 <body>
-    
+    <ul>
+        <a href="{% url 'new_post' %}">add post</a>
+        {% for post in object_list %}
+            <li>
+                <a href="{% url 'post_detail' post.pk %}"> detail</a>
+                <a href="{% url 'update' post.pk %}"> Update</a>
+                <a href="{% url 'delete' post.pk %}">Delete</a><br>
+                {{post.title}} - {{post.author}} <br>
+                {{post.date_create}}<br>
+                {{post.body|safe}}
+                ------------------<br>
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
