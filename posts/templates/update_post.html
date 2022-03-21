@@ -7,15 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="form-group">
-        <form method="POST" enctype = "multipart/form-data"> 
-            {% csrf_token %}
-            {{form.media}}
-            {{ form.as_p }}
-            
-            <input type="submit" value= "Update">
+    {% if user.is_authenticated %}
+        <div class="form-group">
+            <form method="POST" enctype = "multipart/form-data"> 
+                {% csrf_token %}
+                {{form.media}}
+                {{ form.as_p }}
+                
+                <input type="submit" value= "Update">
 
-        </form>
+            </form>
+        </div>
+    {% else %}
+    <div>
+        <h1>You can't modify this post, login first</h1>
     </div>
+    {% endif %}
 </body>
 </html>

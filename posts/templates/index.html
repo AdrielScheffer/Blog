@@ -1,22 +1,77 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
 </head>
 <body>
-    <ul>
-        <a href="{% url 'new_post' %}">add post</a>
+    <header >
+        {% if user.is_authenticated %}
+        <a>Wellcome, {{user.username}}</a>
+        <nav>
+            <ul class="nav_links">
+                <li>
+                    <a>home</a>
+                </li>
+                <li>
+                    <a>categories</a>
+                </li>
+                <li>
+                    <a>create post</a>
+                </li>
+                <li>
+                    <a>about</a>
+                </li>
+            </ul>
+        </nav>
+        <a href="{% url 'logout' %}"><button>logout</button></a>
+        {% else %}
+        <a>hello to my blog</a>
+        <nav>
+            <ul class="nav_links">
+                <li>
+                    <a>home</a>
+                </li>
+                <li>
+                    <a>categories</a>
+                </li>
+                <li>
+                    <a>create post</a>
+                </li>
+                <li>
+                    <a>about</a>
+                </li>
+            </ul>
+        </nav>
+        <a href="{% url 'login' %}"><button>login</button></a>
+        {% endif %}
+    </header>
+
+    <ul class="posts">
+        {% if user.is_authenticated %}
+            <a href="{% url 'new_post' %}">add post</a>
+        {% endif %}
+
+
+
         {% for post in object_list %}
             <li>
-                <a href="{% url 'post_detail' post.pk %}"> detail</a>
-                <a href="{% url 'update' post.pk %}"> Update</a>
-                <a href="{% url 'delete' post.pk %}">Delete</a><br>
+                
+                {% if user.is_authenticated %}
+                    
+                    <a href="{% url 'update' post.pk %}"> Update</a>
+                    <a href="{% url 'delete' post.pk %}">Delete</a><br>
+                {% else %}
+
+                {% endif %}
                 {{post.title}} - {{post.author}} <br>
                 {{post.date_create}}<br>
-                {{post.body|safe}}
+                {{post.body|safe}}<br>
+                <a href="{% url 'post_detail' post.pk %}"> Read more</a><br>
                 ------------------<br>
             </li>
         {% endfor %}

@@ -7,16 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>delete {{post.title}}? </h1>
-    <div class="form-group">
-        <form method="POST"> 
-            {% csrf_token %}
-            <p>ARE YOU SURE?</p>
-            
-            
-            <input type="submit" value= "Delete post">
+    {% if user.is_authenticated %}
+        <h1>delete {{post.title}}? </h1>
+        <div class="form-group">
+            <form method="POST"> 
+                {% csrf_token %}
+                <p>ARE YOU SURE?</p>
+                
+                
+                <input type="submit" value= "Delete post">
 
-        </form>
+            </form>
+        </div>
+    {% else %}
+    <div>
+        <h1>You can't delete this post, login first</h1>
     </div>
+    {% endif %}
 </body>
 </html>

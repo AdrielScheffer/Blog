@@ -1,9 +1,8 @@
-import imp
-import re
 from django.shortcuts import render
 from django.views.generic import DeleteView, DetailView, CreateView, ListView, UpdateView
 from .models import Post
 from django.urls import reverse_lazy
+from .forms import PostForm
 # Create your views here.
 
 
@@ -27,5 +26,6 @@ class Delete_post(DeleteView):
 
 class Create_post(CreateView):
     model = Post
-    template_name = 'add_post.hmtl'
-    fields= '__all__'
+    form_class = PostForm
+    template_name = 'add_post.html'
+    # fields = '__all__'

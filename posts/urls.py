@@ -1,5 +1,4 @@
 
-from django.contrib import admin
 from django.shortcuts import render
 from django.urls import path
 from .views import Home, Create_post,Post_detail, Update_post,Delete_post
