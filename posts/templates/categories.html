@@ -1,0 +1,45 @@
+<!doctype html>
+{% extends 'index.html' %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>{{cats}} posts</title>
+  </head>
+  <body>
+    
+        {% block content %}
+            {% if category_post %}
+                {% for post in category_post %}
+                        <li>
+                            
+                            {% if user.is_authenticated %}
+                                
+                                <a href="{% url 'update' post.pk %}"> Update</a>
+                                <a href="{% url 'delete' post.pk %}">Delete</a><br>
+                            {% else %}
+
+                            {% endif %}
+                            {{post.title}} - {{post.author}} <br>
+                            {{post.date_create}}<br>
+                            {{post.body|safe}}<br>
+                            <a href="{% url 'post_detail' post.pk %}"> Read more</a><br>
+                            ------------------<br>
+                        </li>
+                {% endfor %}
+            {% else %}
+                <h2>Sorry this page does not exist</h2>
+
+            {% endif %}
+
+        
+        {% endblock %}
+
+        
+  </body>
+</html>
