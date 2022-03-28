@@ -1,6 +1,6 @@
 # Simple blog with django
 
-Introduction
+Introduction:
 
 Hello!
 
@@ -33,6 +33,13 @@ For the backend i used enterily django and python
 The frontend is just maded with html and also Bootstrap Components
 
 I upload the proyect to github and made various update to see the progress and to go back to older versions of the proyect
+
+Also I use Ckeditor(this is a text editor for the body of the posts) and Pillow( you have to install this for use images on the proyect)
+so if you want to run this proyect locally you have to install these two packages with Pip
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
