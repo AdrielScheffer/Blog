@@ -1,6 +1,7 @@
 
 <!doctype html>
 {% extends 'index.html' %}
+{% load static %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -14,7 +15,7 @@
   </head>
     <body>
     
-        {% block content %}
+      {% block content %}
 
         <div>
           {% if user.is_authenticated %}
@@ -28,15 +29,86 @@
           {% endif %}
             {{post.title}} - {{post.author}} <br>
                 {{post.date_create}}<br>
+                {% if post.header_image %}
+                  <img src="{{post.header_image.url}}">
+                {% endif %}
+                <br>
                 {{post.body|safe}}
                 ------------------<br>
-
+                
 
         </div>
         <a href="{% url 'home' %}">back</a>
+        <br></br>
+        <hr>
+        
+        <form action="{% url 'like' post.pk %}" method="POST">
+          {% csrf_token %}
+          {% if user.is_authenticated %}
+
+            {% if liked %}
+              <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-danger btn-sm">UNLIKE</button> {{total_likes}}- likes
+            {% else %}
+              <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-success btn-sm">LIKE</button> {{total_likes}}- likes
+            {% endif %}
+
+          {% else %}
+          <button type="button" class="btn btn-link"><a href="{% url 'login' %}">Login to like</a></button> {{total_likes}}- likes
+          {% endif %}
+          
+        </form>
+        <br>
+          
+          
+        <hr>
+        <h2>Comments...</h2>
+        {% if not post.comments.all %}
+          no comments yet, make the first!<br>
+          <a href="{% url 'add_comment' post.pk %}"> add comment</a>
+        {% else %}
+        <a href="{% url 'add_comment' post.pk %}"> add comment</a><br>
+          {% for comment in post.comments.all %}
+            <strong>{{comment.name}} - {{comment.date_added}}</strong><br>
+            {{comment.body|safe}}
+            
+          {% endfor %}
+
+        {% endif %} 
+        <hr>
+        <div class="card mb-3" >
+          <div class="row g-0">
+            <div class="col-md-2">
+            {% if post.author.userprofile.profile_pic %}
+              <img src="{{post.author.userprofile.profile_pic.url}}" width=200, height=200 class="img-fluid rounded-start">
+
+            {% else %}
+            <img src="{% static 'posts/images/default_profile_image.jpg' %}" width=200, height=200 class="img-fluid rounded-start">
+            {% endif %}
+            </div>
+            <div class="col-md-10">
+              <div class="card-body">
+                <h5 class="card-title">{{post.author}}</h5>
+                <p class="small text-muted">
+                  {% if post.author.userprofile.instagram_url %}
+                    <a href="{{post.author.userprofile.instagram_url}}">Instagram</a> | 
+                  {% endif %}
+                  {% if post.author.profile.twitter_url %}
+                    <a href="{{post.author.userprofile.twitter_url}}">Twitter</a> | 
+                  {% endif %}
+                  {% if post.author.profile.facebook_url %}
+                    <a href="{{post.author.userprofile.facebook_url}}">Facebook</a></p>
+                  {% endif %}
+                  <a href="{% url 'profileview' post.author.id %}">Profile page</a>
+                <p class="card-text">{{post.author.userprofile.bio}}</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+          
 
 
-        {% endblock %}
+      {% endblock %}
 
         <!-- Optional JavaScript; choose one of the two! -->
 

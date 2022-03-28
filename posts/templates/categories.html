@@ -19,9 +19,11 @@
                         <li>
                             
                             {% if user.is_authenticated %}
+                                {% if post.author.id == user.id %}
                                 
-                                <a href="{% url 'update' post.pk %}"> Update</a>
-                                <a href="{% url 'delete' post.pk %}">Delete</a><br>
+                                    <a href="{% url 'update' post.pk %}"> Update</a>
+                                    <a href="{% url 'delete' post.pk %}">Delete</a><br>
+                                {% endif %}
                             {% else %}
 
                             {% endif %}

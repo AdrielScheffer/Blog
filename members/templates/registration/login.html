@@ -11,12 +11,27 @@
 </head>
 <body>
     <div class="container">
-        <form method="POST" enctype = "multipart/form-data"> 
+        <form method="POST" > 
             {% csrf_token %}
-            {{form.media}}
-            {{ form.as_p }}
+            <br></br>
+            <form>
+                
+                <div class="form-group">
+                    <label for="the_user">Username</label>
+                    <input type="text" class="form-control" id="the_user" name = 'username'>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="the_password">Password</label>
+                    <input type="password" class="form-control" id="the_password" name= 'password'  >
+                    <small  class="form-text text-muted"><a href="{% url 'register' %}">Not a user? Register here.</a></small>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
             
-            <input type="submit" value= "login">
+            
+            
 
         </form>
     </div>
