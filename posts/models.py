@@ -1,8 +1,10 @@
+
 from django.db import models
 from django.forms import CharField
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.urls import reverse
+from PIL import Image
 # Create your models here.
 
 class Category(models.Model):
@@ -25,6 +27,16 @@ class Post(models.Model):
     category = models.CharField(max_length=255, default='uncategorized')
     likes = models.ManyToManyField(User, related_name='blog_posts')
     snippet= models.CharField(max_length=255)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = Image.open(self.header_image.path)
+
+        if img.height >720 or img.width >1280:
+            output_size = (1280,720)
+            img.thumbnail(output_size)
+            img.save(self.header_image.path)
+
 
 
     def __str__(self):
