@@ -19,7 +19,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255,default='sin titulo')
     header_image = models.ImageField(blank=True, null =True, upload_to ="images/")
     author = models.ForeignKey(User, on_delete=models.CASCADE,null = True)
     date_create = models.DateTimeField(auto_now_add=True)
