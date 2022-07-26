@@ -24,22 +24,7 @@
               <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
             </li>
             
-              <!-- {% if cat_menu %}
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Categories
-                  </a>
-              
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  {% for items in cat_menu %}
-                    <li><a class="dropdown-item" href="{% url 'category' items|slugify %}">{{items}}</a></li>
-                  {% endfor %}
-                </ul>
-              {% else %}
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'category-list' %}">category list</a>
-                </li>
-              {% endif %} -->
+              <!--  -->
               {% if user.is_authenticated %}
                 
                 
