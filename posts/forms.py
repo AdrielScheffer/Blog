@@ -13,6 +13,8 @@ from posts.models import Post
 # for item in choices:
 #     choice_list.append(item)
 
+choice_list = ["sports", "gaming", "news"]
+
 class PostForm(forms.ModelForm):
     required_css_class = 'required-field'
     class Meta:
