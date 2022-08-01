@@ -5,6 +5,8 @@ from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.urls import reverse
 from PIL import Image
+
+
 # Create your models here.
 
 class Category(models.Model):
@@ -20,22 +22,13 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255,default='sin titulo')
-    header_image = models.ImageField(blank=True, null =True, upload_to ="images/")
+    header_image = models.ImageField(blank=True, null =True, upload_to =".media/images/")
     author = models.ForeignKey(User, on_delete=models.CASCADE,null = True)
     date_create = models.DateTimeField(auto_now_add=True)
     body = RichTextField()
     category = models.CharField(max_length=255, default='uncategorized')
     likes = models.ManyToManyField(User, related_name='blog_posts')
     snippet= models.CharField(max_length=255)
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        img = Image.open(self.header_image.path)
-
-        if img.height >720 or img.width >1280:
-            output_size = (1280,720)
-            img.thumbnail(output_size)
-            img.save(self.header_image.path)
 
 
 
@@ -50,6 +43,10 @@ class Post(models.Model):
         
         #return reverse('post_detail', args =(str(self.id)))
         return reverse('home')
+
+
+    
+
 
 
 class UserProfile(models.Model):

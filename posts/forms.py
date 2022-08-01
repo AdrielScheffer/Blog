@@ -1,10 +1,10 @@
 
-
 from django import forms
 from .models import Post,Category,Comment
 from django.forms import ModelForm, Textarea
 from posts.models import Post
-
+from PIL import Image
+from django.core.files.storage import default_storage as storage
 
 
 choices= Category.objects.all().values_list('name', 'name')
@@ -27,7 +27,9 @@ class PostForm(forms.ModelForm):
             'category': forms.Select(choices=choice_list, attrs={ 'class': 'form-control'}),
             'body': forms.Textarea( attrs={'class': 'form-control'}),
             'snippet': forms.Textarea( attrs={'class': 'form-control'}),
-        }           
+        }         
+
+
         
 
 class UpdateForm(forms.ModelForm):

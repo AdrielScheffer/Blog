@@ -15,6 +15,8 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config
+import cloudinary_storage
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +46,8 @@ INSTALLED_APPS = [
     'posts',
     'ckeditor',
     'members',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +154,11 @@ LOGOUT_REDIRECT_URL = 'home'
 
 
 django_heroku.settings(locals())
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'djq206gas',
+    'API_KEY': '764565775726185',
+    'API_SECRET': '57fQkfU5ma10ipyO5NTn7iMRSv0'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
