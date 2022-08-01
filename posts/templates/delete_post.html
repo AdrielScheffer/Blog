@@ -10,14 +10,14 @@
 </head>
 <body>
     {% if user.is_authenticated %}
-        <h1>delete {{post.title}}? </h1>
-        <div class="form-group">
+        <h1 class="d-flex justify-content-center mt-4">delete "{{post.title}}"? </h1>
+        <div class="form-group d-flex justify-content-center">
             <form method="POST"> 
                 {% csrf_token %}
-                <p>ARE YOU SURE?</p>
+                <p class="d-flex justify-content-center">ARE YOU SURE?</p>
                 
                 
-                <input type="submit" value= "Delete post">
+                <input type="submit" class="btn btn-danger" value= "Delete post">
 
             </form>
         </div>

@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('posts.urls')),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
 ] +static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

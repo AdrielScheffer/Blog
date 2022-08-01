@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'members',
     'cloudinary_storage',
     'cloudinary',
+    'django_ckeditor_5',
 ]
 
 MIDDLEWARE = [
@@ -155,10 +156,35 @@ LOGOUT_REDIRECT_URL = 'home'
 
 django_heroku.settings(locals())
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'djq206gas',
     'API_KEY': '764565775726185',
     'API_SECRET': '57fQkfU5ma10ipyO5NTn7iMRSv0'
 }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+
+
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'Custom',
+#         'toolbar_Custom': [
+#             ['Bold', 'Italic', 'Underline'],
+#             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+#             ['Link', 'Unlink'],
+#             ['RemoveFormat', 'Source']
+#         ],
+#         'height': 300,
+#         'width': 'auto',
+#     }
+# }
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 'auto',
+    },
+}
