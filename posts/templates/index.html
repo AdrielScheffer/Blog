@@ -80,6 +80,7 @@
                               <li><a class="dropdown-item" href="{% url 'edit_profileview' user.userprofile.id %}">Edit profile page</a></li>
 
                               <li><a class="dropdown-item" href="{% url 'profileview' user.userprofile.id %}">Show profile page</a></li>
+                              <li><a class="dropdown-item bg-danger" href="{% url 'logout' %}">log out</a></li>
                             {% else %}
                               <li><a class="dropdown-item" href="{% url 'create_profile'  %}">create profile</a></li>
                               
