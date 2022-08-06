@@ -4,7 +4,7 @@ Introduction:
 
 Hello!
 
- Im a junior programer and this is one of my first proyects maded with django and python. I made it following tutorials an reading a lot of django documentation.
+ Im a junior programer and this is one of my first proyects maded with django and python. I made it after finishing the Python course on Coderhouse and also following  tutorials an reading a lot of django documentation.
  It was totally fun to do and i learned a lot in the way to finish it
  
  --------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -39,7 +39,8 @@ so if you want to run this proyect locally you have to install these two package
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+August 2022 update:
+Now the proyect is online on heroku, here the link: https://django-blog-adrielscheffer.herokuapp.com/
 
 
 
