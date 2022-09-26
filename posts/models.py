@@ -10,7 +10,7 @@ from PIL import Image
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, default="uncategorized", null=True)
 
     def __str__(self):
         return self.name
