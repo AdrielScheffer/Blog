@@ -191,4 +191,4 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-ALLOWED_HOSTS = ["https://simpleblogwithdjango-production.up.railway.app"]
+ALLOWED_HOSTS = ["simpleblogwithdjango-production.up.railway.app"]
