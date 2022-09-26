@@ -190,3 +190,5 @@ CKEDITOR_CONFIGS = {
         'width': 'auto',
     },
 }
+
+ALLOWED_HOSTS = ["https://simpleblogwithdjango-production.up.railway.app"]
