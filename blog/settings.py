@@ -192,3 +192,5 @@ CKEDITOR_CONFIGS = {
 }
 
 ALLOWED_HOSTS = ["simpleblogwithdjango-production.up.railway.app"]
+
+CSRF_TRUSTED_ORIGINS = ['https://simpleblogwithdjango-production.up.railway.app']
