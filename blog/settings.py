@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-kar#ti61eloui-0gj4%)da@ugplkygs6cr0^-%op=_)l)8f+bz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+
 
 
 # Application definition
@@ -191,6 +191,6 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-ALLOWED_HOSTS = ["simpleblogwithdjango-production.up.railway.app"]
+ALLOWED_HOSTS = ["simpleblogwithdjango-production.up.railway.app","127.0.0.1"]
 
 CSRF_TRUSTED_ORIGINS = ['https://simpleblogwithdjango-production.up.railway.app']
